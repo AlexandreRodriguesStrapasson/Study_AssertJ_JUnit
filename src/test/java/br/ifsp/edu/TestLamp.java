@@ -17,4 +17,16 @@ public class TestLamp {
         lamp.switchStateOfLamps();
         assertThat(lamp.cont).isEqualTo(2);
     }
+
+    @Test
+    @DisplayName("Should return 1 if FA and FB is turn on")
+    void shouldReturn1IfFaAndFbIsTurnOn() {
+        lamp.IA = false;
+        lamp.IB = false;
+        lamp.FA = true;
+        lamp.FB = true;
+        lamp.switchStateOfLamps();
+        assertThat(lamp.cont).isEqualTo(1);
+    }
+
 }
