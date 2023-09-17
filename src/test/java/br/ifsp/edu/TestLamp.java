@@ -10,10 +10,7 @@ public class TestLamp {
     @Test
     @DisplayName("Should return 2 if FB is turn on")
     void shouldReturn2IfFbIsTurnOn() {
-        lamp.IA = false;
-        lamp.IB = false;
-        lamp.FA = false;
-        lamp.FB = true;
+        turnOnAndDownTheLamps(false, false, false, true);
         lamp.switchStateOfLamps();
         assertThat(lamp.cont).isEqualTo(2);
     }
@@ -21,12 +18,15 @@ public class TestLamp {
     @Test
     @DisplayName("Should return 1 if FA and FB is turn on")
     void shouldReturn1IfFaAndFbIsTurnOn() {
-        lamp.IA = false;
-        lamp.IB = false;
-        lamp.FA = true;
-        lamp.FB = true;
+        turnOnAndDownTheLamps(false, false, true, true);
         lamp.switchStateOfLamps();
         assertThat(lamp.cont).isEqualTo(1);
     }
 
+    private void turnOnAndDownTheLamps(boolean ia, boolean ib, boolean fa, boolean fb) {
+        lamp.initialStateOfLampA = ia;
+        lamp.initialStateOfLampB = ib;
+        lamp.finalStateOfLampA = fa;
+        lamp.finalStateOfLampB = fb;
+    }
 }
